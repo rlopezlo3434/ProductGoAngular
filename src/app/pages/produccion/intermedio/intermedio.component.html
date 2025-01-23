@@ -1,0 +1,52 @@
+<div>
+    <div class="title-container" style="margin-bottom: 10px">
+      <i class="fa-solid fa-cart-shopping" style="color: #d9d9d9"></i>
+      <span
+        style="
+          flex-grow: 1;
+          text-align: center;
+          font-weight: 700;
+          color: #a9a7a7;
+          font-size: 14px;
+        "
+        >PRODUCTOS PARTES</span
+      >
+      <i class="fa-duotone fa-solid fa-check-double" style="color: #d9d9d9"></i>
+    </div>
+  
+    <div *ngFor="let option of partes">
+      <div class="card-item">
+        <div class="info-product">
+          <div class="d-flex product-header">
+            <div
+              
+            >
+              <i class="fa-solid fa-cube"></i>
+              {{ option.cod_producto }}
+            </div>
+          </div>
+          <div class="product-description">
+            {{ option.des_producto }}
+          </div>
+          <div class="d-flex product-footer">
+            <div></div>
+            <div>
+              <div>
+                <strong>{{ option.usuario }}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-flen">
+          <a
+            class="changeProduct"
+            (click)="verProducto(option)"
+            >VER PRODUCTO</a
+          >
+        </div>
+        <!-- (click)="verProducto(option)" -->
+      </div>
+    </div>
+  
+  </div>
+  

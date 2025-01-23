@@ -1,0 +1,29 @@
+<div class="sidebar-user mb-3">
+  <div class="align-items-center" style="display: flex">
+    <img src="../../../assets/icon/user.png" class="user-avatar" />
+    <div class="user-panel">
+      <div>
+        <div class="user-name">{{ informationUser.name }}</div>
+        <div class="user-profile">{{ informationUser.rol_Description }}</div>
+        <div class="user-user">{{ informationUser.username }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngFor="let module of modules" class="module-container">
+  <div class="d-flex container-title" (click)="toggleDropdown(module)">
+    <p class="module">{{ module.descripcion }}</p>
+    <i class="dropdown-toggle" style="font-size: 12px"></i>
+  </div>
+  <ul *ngIf="module.isOpen">
+    <li
+      *ngFor="let access of module.listaAccesos"
+      (click)="seleccionarModulo()"
+    >
+      <a [routerLink]="['/productgo/home' + access.uri.url]">
+        <i class="{{ access.uri.tipo }} iconModule"></i
+        >{{ access.uri.presentacion }}</a
+      >
+    </li>
+  </ul>
+</div>

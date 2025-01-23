@@ -1,0 +1,238 @@
+<div>
+  <div class="header-capacidades">
+    <div class="consultor">
+      <div class="text-font">Consultor</div>
+      <mat-form-field style="width: 100%" class="example-full-width">
+        <mat-label>Consultor</mat-label>
+        <input matInput type="text" [value]="consultor" disabled="true" />
+      </mat-form-field>
+    </div>
+    <div class="date">
+      <div class="text-font">Fecha</div>
+      <div>
+        <mat-form-field style="width: 100%" class="example-full-width">
+          <mat-label>Fecha</mat-label>
+          <input matInput type="date" [value]="today" disabled="true" />
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <!-- capacidades body -->
+  <div *ngIf="visibleRegistro == 1" class="body-capacidades">
+    <div class="titleRegistro">Agregar Registro</div>
+    <div class="flexbottom">
+      <div class="w50">
+        <div class="text-font">Proceso</div>
+        <div>
+            <mat-form-field style="width: 100%" class="example-full-width">
+                <input
+                  type="text"
+                  #input3
+                  placeholder="Proceso"
+                  aria-label="Number"
+                  matInput
+                  [matAutocomplete]="auto2"
+                  (input)="filter2(input3.value)"
+                  [(ngModel)]="selectedProceso"
+                />
+                <mat-autocomplete (optionSelected)="onOptionSelected($event)" #auto2="matAutocomplete">
+                  <mat-option
+                    *ngFor="let option of filteredOptions2"
+                    [value]="option.proceso"
+                  >
+                    {{ option.proceso }}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+        </div>
+      </div>
+      <div class="w50">
+        <div class="text-font">Operario</div>
+        <div>
+          <mat-form-field style="width: 100%" class="example-full-width">
+            <input
+              type="text"
+              #input2
+              placeholder="Operario"
+              aria-label="Number"
+              matInput
+              [matAutocomplete]="auto3"
+              (input)="filter3(input2.value)"
+              [(ngModel)]="selectedOperario"
+            />
+            <mat-autocomplete (optionSelected)="onOptionSelected2($event)" #auto3="matAutocomplete">
+              <mat-option
+                *ngFor="let option of filteredOptions3"
+                [value]="option.nombreOperario"
+              >
+                {{ option.nombreOperario }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="flexbottom">
+      <div class="w50">
+        <div class="text-font">Actividad</div>
+        <div>
+          <mat-form-field style="width: 100%" class="example-full-width">
+            <input
+              type="text"
+              #input1
+              placeholder="Actividad"
+              aria-label="Number"
+              matInput
+              [matAutocomplete]="auto"
+              (input)="filter(input1.value)"
+              [(ngModel)]="selectedActividad"
+
+            />
+            <mat-autocomplete (optionSelected)="onOptionSelected3($event)" #auto="matAutocomplete">
+              <mat-option
+                *ngFor="let option of filteredOptions"
+                [value]="option.actividad"
+              >
+                {{ option.actividad }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="w50">
+        <div class="text-font">Producto</div>
+        <div>
+          <mat-form-field style="width: 100%" class="example-full-width">
+            <input
+              type="text"
+              #input4
+              placeholder="Producto"
+              aria-label="text"
+              matInput
+              [matAutocomplete]="auto4"
+              (input)="filter4(input4.value)"
+              [(ngModel)]="selectedProducto"
+            />
+            <mat-autocomplete (optionSelected)="onOptionSelected4($event)"  #auto4="matAutocomplete">
+              <mat-option
+                *ngFor="let option of filteredOptions4"
+                [value]="option.prd_codprd"
+              >
+                {{ option.prd_codprd }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="visibleIniciarCronometro == 1">
+      <div style="margin-bottom: 15px">
+        <button (click)="iniciarCronometro()" class="start-time">
+          INICIAR CRONOMETRO
+        </button>
+      </div>
+    </div>
+    <div *ngIf="visibleDetenerCronometro == 1">
+      <div style="margin-bottom: 15px">
+        <button (click)="detenerCronometro()" class="stop-time">
+          DETENER CRONOMETRO
+        </button>
+      </div>
+    </div>
+    <div class="flexbottom">
+      <div class="w50">
+        <div class="text-font">Hora de inicio</div>
+        <div>
+          <mat-form-field style="width: 100%" class="example-full-width">
+            <mat-label>Hora de inicio</mat-label>
+            <input matInput [value]="horaInicio" type="time" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="w50">
+        <div class="text-font">Hora de fin</div>
+        <div>
+          <mat-form-field style="width: 100%" class="example-full-width">
+            <mat-label>Hora de fin</mat-label>
+            <input matInput [value]="horaFin" type="time" />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="flexbottom" style="flex-direction: column">
+      <div class="text-font">Comentarios</div>
+      <div>
+        <textarea
+          class="personal areatext"
+          placeholder="Requiere ajusto de herramientas"
+          [(ngModel)]="comentariosTexto"
+        ></textarea>
+      </div>
+    </div>
+    <div style="margin-bottom: 15px">
+      <button (click)="saveRegistro()" class="agregar-registro">Agregar registro</button>
+    </div>
+  </div>
+  <div *ngIf="visibleConsolidado == 1" class="heighMax">
+    <div class="list-card">
+      <div style="color: #498518; font-weight: 500">CONSOLIDADO</div>
+      <div><button (click)="exportToExcel()" class="excelDownload"> <i class="fa fa-file"></i> Descargar</button></div>
+    </div>
+    <div *ngFor="let module of registros">
+      <div class="body-capacidades2">
+        <div class="flexbottom">
+          <div class="columnstyle">Nombre Operario:</div>
+          <div class="fontstyle">{{ module.nombreOperario }}</div>
+        </div>
+        <div class="flexbottom">
+          <div class="columnstyle">Descripción Proceso:</div>
+          <div class="fontstyle">{{ module.descripcionProceso }}</div>
+        </div>
+        <div class="flexbottom">
+          <div class="columnstyle">Actividad:</div>
+          <div class="fontstyle">{{ module.tarea }}</div>
+        </div>
+        <div class="flexbottom">
+          <div class="columnstyle">Codigo Producto:</div>
+          <div class="fontstyle">{{ module.codigoProducto }}</div>
+        </div>
+        <div class="flexbottom">
+          <div class="columnstyle">Nombre Producto:</div>
+          <div class="fontstyle">{{ module.nombreProducto }}</div>
+        </div>
+        <div class="flexbottom">
+          <div class="columnstyle">Fecha:</div>
+          <div class="fontstyle">{{ module.fecha | date:'dd/MM/yyyy' }}</div>
+        </div>
+        <div class="flexbottom">
+          <div class="columnstyle">Hora Inicio:</div>
+          <div class="fontstyle">
+            {{
+              module.horaInicio ? formatHoraInicio(module.horaInicio) : "00:00"
+            }}
+          </div>
+        </div>
+        <div class="flexbottom">
+          <div class="columnstyle">Hora Fin:</div>
+          <div class="fontstyle">
+            {{ module.horaFin ? formatHoraInicio(module.horaFin) : "00:00" }}
+          </div>
+        </div>
+        <div class="flexbottom">
+          <div class="columnstyle">Duración:</div>
+          <div class="fontstyle">{{ module.duracion ? formatHoraInicio(module.duracion) : "00:00" }}</div>
+        </div>
+        <div class="flexbottom">
+          <div class="columnstyle">Comentario:</div>
+          <div class="fontstyle">{{ module.comentarios }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="button-group">
+    <button class="button" (click)="verRegistro()">Agregar registro</button>
+    <button class="button" (click)="verConsolidado()">Ver consolidado</button>
+  </div>
+</div>

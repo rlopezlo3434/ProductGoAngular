@@ -1,0 +1,69 @@
+<div *ngIf="!vistaDetalle" class="resultsDiv">
+    <div class="header">
+      <span>LISTA DE PRODUCTOS</span>
+      <span class="cursor" id="idOpenFilter"> </span>
+    </div>
+    <div *ngFor="let option of filteredProductos">
+      <div class="card-item">
+        <div class="info-product">
+            <div class="d-flex product-header">
+              <div class="codigoProduct" [ngClass]="getEstadoColorClass(option.estadoproducto)">
+                <i class="fa-solid fa-cube"></i>
+                {{ option.codigo }}
+            </div>
+              <div class="estadoProceso" [ngClass]="getEstadoClass(option.avance)">{{ getAvanceTexto(option.avance) }}</div>
+            </div>
+            <div class="product-description">
+              {{ option.descripcion }}
+            </div>
+            <div class="d-flex product-footer">
+              <div>
+                  <div class="d-flex">
+                    <div class="label-peso"><strong>Peso Neto:</strong></div>
+                    <div>{{ option.peso_neto }}</div>
+                  </div>
+                  <div class="d-flex">
+                    <div class="label-peso"><strong>Peso Bruto:</strong></div>
+                    <div>{{ option.peso_bruto }}</div>
+                  </div>
+              </div>
+              <div>
+                  <div><strong>{{ option.usuario }}</strong></div>
+                  <!-- <div>{{ option.fecha ? (option.fecha | date:'dd/MM/yyyy HH:mm') : 'Fecha no disponible' }}</div> -->
+              </div>
+            </div>
+  
+        </div>
+        <div class="footer-flen">
+          <a href="javascript:void(0)" class="changeProduct" [routerLink]="['detalle']" (click)="verProducto(option)">VER PRODUCTO</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Barra de búsqueda fija en la parte inferior -->
+  <div *ngIf="!vistaDetalle" class="searchContainer">
+    <div class="searchDiv w-100">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 d-flex justify-content-between flex-column">
+            <div class="d-flex align-items-center mb-3">
+              <p class="mb-0 me-2"><strong>Código</strong></p>
+              <input
+                type="text"
+                class="form-control"
+                id="searchInput"
+                placeholder="Buscar..."
+                [(ngModel)]="searchTerm"
+                (input)="filterProductos()"
+              />
+            </div>
+            <button class="btn btn-primary ml-2" id="searchBtn" (click)="listarProductos()">Buscar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="vistaDetalle" >
+    <router-outlet></router-outlet>
+  </div>
+  

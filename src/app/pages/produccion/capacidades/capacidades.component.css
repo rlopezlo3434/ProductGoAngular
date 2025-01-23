@@ -1,0 +1,166 @@
+.header-capacidades {
+  display: flex;
+}
+.consultor {
+  width: calc(60%);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.date {
+  width: calc(40%);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.personal {
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.text-font {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.w50 {
+  width: calc(50%);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.start-time {
+  border-radius: 8px;
+  padding: 20px;
+  width: 100%;
+  border: none;
+  background-color: #fcce14;
+  color: white;
+}
+
+.stop-time {
+  border-radius: 8px;
+  padding: 20px;
+  width: 100%;
+  border: none;
+  background-color: #fc1414;
+  color: white;
+}
+
+.agregar-registro {
+  border-radius: 8px;
+  padding: 15px;
+  width: 100%;
+  border: none;
+  background-color: black;
+  color: white;
+}
+
+.areatext {
+  width: 100%;
+  height: calc(30vh - 200px);
+}
+
+.titleRegistro {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #498518;
+  font-weight: 500;
+}
+
+.body-capacidades {
+  margin: 0px 20px 20px 20px;
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 10px;
+  border-style: dashed;
+}
+
+.flexbottom {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.button-group {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.button {
+  flex: 1;
+  padding: 15px 20px;
+  border: none;
+  background-color: white;
+  color: #555;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.button.active {
+  background-color: #e4e7eb;
+  color: #333;
+}
+
+.button:not(.active):hover {
+  background-color: #f5f5f5;
+  color: #000;
+}
+
+.button:first-child {
+  border-right: 1px solid #ccc;
+}
+
+.columnstyle {
+  color: #6f7681;
+  font-size: 20px;
+  font-weight: 500;
+  width: 30%;
+}
+
+.fontstyle {
+  font-size: 20px;
+}
+
+.body-capacidades2 {
+  margin: 0px 20px 20px 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.heighMax {
+  height: calc(70vh);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.excelDownload {
+  border-radius: 8px;
+  padding: 15px;
+  border: none;
+  background-color: rgb(36, 128, 0);
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+.list-card {
+  font-size: 25px;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

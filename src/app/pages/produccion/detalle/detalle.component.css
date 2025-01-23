@@ -1,0 +1,130 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  color: #067f10;
+  font-size: 20px;
+  padding-bottom: 10px;
+}
+
+.container {
+  margin-top: 10px;
+}
+
+.cardT {
+  margin-bottom: 10px;
+  border-radius: 7px;
+  background: white;
+  box-shadow: 0px 3px 10px #c3c3c3;
+}
+
+.card-padre {
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 3px 6px #c3c3c3;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.title-container {
+  border-radius: 6px;
+  border: 1px dashed #ebebeb;
+  text-align: center;
+  padding: 10px;
+  gap: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.select-option {
+  border-radius: 6px;
+  border: 1px solid;
+  padding: 10px;
+  margin: 10px 0px 10px;
+  width: 100%;
+  text-align: center;
+}
+
+.footer-flen a {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: linear-gradient(360deg, #98bb7c 0%, #6dac3b 100%);
+  color: white;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  font-size: 14px;
+  padding: 8px;
+  text-decoration: none;
+}
+.card-header {
+  justify-content: space-between;
+  padding: 10px;
+  align-items: center;
+}
+
+.card-header-serie {
+  border: 1px solid;
+  border: none;
+  color: white;
+  padding: 4px 6px;
+  border-radius: 8px;
+}
+.card-obs {
+  border-radius: 2px;
+  padding: 7px 10px;
+  background-color: #add8e6;
+  text-align: center;
+  border-left: solid 3px #88c4d7;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.card-ensamblador {
+  border-radius: 2px;
+  padding: 7px 10px;
+  background-color: #f7c497;
+  text-align: center;
+  border-left: solid 3px #ee8951;
+  text-transform: uppercase;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-adv {
+  border-radius: 2px;
+  margin-bottom: 10px;
+  padding: 7px 10px;
+  background-color: #f9f59d;
+  text-align: center;
+  border-left: solid 3px #d1cc64;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+.card-middle {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+
+.color-estado-1 {
+  background-color: #0bac16;
+}
+
+.color-estado-0 {
+  background-color: #e42b1e;
+}
+
+.color-insumo-0 {
+  color: #0bac16;
+}
+
+.color-insumo-1 {
+  color: #e42b1e;
+}

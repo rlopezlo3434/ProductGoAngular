@@ -1,0 +1,249 @@
+/* login.component.scss */
+
+.login-container {
+    height: calc(100vh - 39px);
+    background-color: #fff;
+  
+    :is(h2) {
+      text-align: center;
+    }
+  
+    :is(form) {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .form-group {
+      width: 100%; /* Asegurar que los grupos de formulario ocupen el ancho completo */
+      position: relative;
+      margin-bottom: 20px;
+      align-items: center;
+    }
+  
+    :is(label) {
+      align-items: center;
+      position: absolute;
+  
+      top: 14px;
+      left: 80px;
+      font-size: 16px;
+      color: #999;
+      transition: top 0.3s, left 0.3s, font-size 0.3s;
+    }
+  
+    :is(label).active {
+      top: -10px;
+      left: 70px;
+      font-size: 12px;
+      color: #333;
+      background-color: #fff;
+      padding: 0 4px;
+    }
+  
+    :is(input) {
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: auto;
+      transition: border-color 0.3s;
+    }
+  
+    :is(input):focus {
+      outline: none;
+      border-color: dodgerblue;
+    }
+  
+    :is(button) {
+      padding: 12px;
+      font-size: 16px;
+      background-color: dodgerblue;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+  
+    :is(button):hover {
+      background-color: #007bff;
+    }
+  }
+  .content-fondo {
+    width: 100%;
+    height: 40%;
+    position: relative;
+    overflow: hidden;
+    min-height: 200px;
+  }
+  .logo {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin-right: 50px;
+    padding: 5px;
+    border-radius: 0 0 35% 35%;
+    background: url(../../../assets/icon/logo-reyplast.png) #fff;
+    background-size: 80px !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 2;
+  }
+  .fondo {
+    position: relative;
+    height: 100%;
+    background: url(../../../assets/banner/bannermarketing2024.jpg);
+    /*background: url(../img/asset/banner/banner-almacen.jpg);*/
+    background-size: cover !important;
+    background-position: center;
+  }
+  .fondo::after {
+    content: " ";
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    border-color: transparent #fff transparent transparent;
+    border-style: solid;
+    border-width: 90px 100vw 0 0;
+    transform: scale(1.0001);
+    z-index: 1;
+  }
+  .icon-user {
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    background: url(../../../assets/icon/user.svg) #6dac3b; /* #dc3545; */
+    background-size: 60px !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 3;
+  }
+  .form-title {
+    text-align: center;
+  }
+  .content-main {
+    height: calc(100vh - 39px);
+    background-color: #fff;
+  }
+  .input-user {
+    text-transform: lowercase !important;
+  }
+  
+  .content-login .login-control {
+    border: 0px transparent !important;
+    border-bottom: 1px solid rgb(128, 124, 124) !important;
+    width: 100%;
+    max-width: 270px;
+  }
+  .login-control:focus {
+    box-shadow: none !important;
+  }
+  .login-title {
+    color: #6dac3b; /* #dc3545; */
+    font-size: 2rem;
+    padding: 0 0 15px 0;
+  }
+  
+  .login-container .btn-login {
+    background-color: #6dac3b;
+    width: 100%;
+    padding: 7px;
+    max-width: 270px;
+    /* margin-left: 140px; */
+  }
+  
+  .login-container .btn-login:hover {
+    color: #fff;
+    background-color: #218838;
+    border-color: #1e7e34;
+  }
+  
+  .content-login .login-title {
+    margin-bottom: 8px;
+    padding-top: 45px;
+    font-size: 30px;
+  }
+  
+  @media screen and (min-width: 1024px) {
+    .content-main {
+      position: relative;
+    }
+    .content-fondo {
+      width: auto;
+      /*height: calc(100vh - 39px);*/
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      min-height: auto;
+    }
+    .fondo::after {
+      display: none;
+    }
+    .content-login {
+      position: absolute;
+      top: calc(50% + 20px);
+      left: 50%;
+      transform: translate(-50%, -55%);
+      width: 30%;
+      padding-top: 30px;
+      border-radius: 5px;
+      height: 400px;
+      background: #fff;
+    }
+    .login-control {
+      width: 100%;
+      max-width: 250px;
+    }
+    .icon-user {
+      position: absolute;
+      top: calc(50% - 240px);
+    }
+    .logo {
+      width: 160px;
+      height: 160px;
+      margin-right: 0px;
+      border-radius: 0 0 0 100%;
+      background-position: 90% 10%;
+      background-size: 120px !important;
+    }
+  
+    .content-login .formlabel {
+      align-items: center;
+      position: absolute;
+      top: 16px;
+      left: 110px;
+      font-size: 16px;
+      color: #999;
+      transition: top 0.3s, left 0.3s, font-size 0.3s;
+    }
+  
+    label.active {
+      top: -10px;
+      left: 80px;
+      font-size: 12px;
+      color: #333;
+      background-color: #fff;
+      padding: 0 4px;
+    }
+    .content-login .login-title {
+      margin-bottom: 8px;
+      margin-top: 10px;
+      font-size: 30px;
+    }
+    .login-container .btn-login {
+      background-color: #6dac3b;
+      width: 100%;
+      padding: 7px;
+      max-width: 270px;
+      /* margin-left: 140px; */
+    }
+  }
+  

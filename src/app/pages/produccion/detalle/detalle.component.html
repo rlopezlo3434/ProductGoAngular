@@ -1,0 +1,108 @@
+<div *ngIf="!vistaFoto" class="container">
+  <div class="container-body">
+    <div class="title-container" style="margin-bottom: 10px">
+      <i class="fa-solid fa-cart-shopping" style="color: #d9d9d9"></i>
+      <span
+        style="
+          flex-grow: 1;
+          text-align: center;
+          font-weight: 700;
+          color: #a9a7a7;
+          font-size: 14px;
+        "
+        >FORMULA INSUMOS</span
+      >
+      <i class="fa-duotone fa-solid fa-check-double" style="color: #d9d9d9"></i>
+    </div>
+    <!-- <div>
+        <select class="select-option">
+          <option value="">-- Seleccione un Año --</option>
+          <option value="2024">2024</option>
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
+          <option value="2021">2021</option>
+          <option value="2020">2020</option>
+        </select>
+      </div> -->
+    <div *ngFor="let insumo of insumos">
+      <div class="cardT">
+        <div>
+          <div class="d-flex card-header">
+            <div style="display: flex; gap: 10px">
+              <div *ngFor="let sec of insumo.secuencia">
+                <div
+                  class="card-header-serie"
+                  [ngClass]="getEstadoColorClass(insumo.estado)"
+                >
+                  <div class="label-peso">
+                    <strong>{{ sec.secuencia }}</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex">
+              <div class="label-peso">
+                <strong>{{ insumo.area_trabajo }}</strong>
+              </div>
+            </div>
+            <div style="display: flex; gap: 10px">
+              <div>
+                <div class="card-middle">
+                  <div><i class="fa-solid fa-cube"></i></div>
+                  <div>{{ insumo.cantidad[0]?.cantidad }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="margin: 10px">
+            <div *ngIf="insumo.ensamblador_nombre" class="card-ensamblador">
+              <mat-icon style="color: #ee8951">home</mat-icon>
+              {{ insumo.ensamblador_nombre }}
+            </div>
+          </div>
+          <div style="margin: 10px">
+            <div *ngIf="insumo.advertencia" class="card-adv">
+              {{ insumo.advertencia }}
+            </div>
+            <div *ngIf="insumo.obs" class="card-obs">
+              {{ insumo.obs }}
+            </div>
+          </div>
+        </div>
+        <div class="footer-flen">
+          <a
+            href="javascript:void(0)"
+            [routerLink]="['fotos']"
+            (click)="verInsumo(insumo)"
+            class="changeProduct"
+            >INSUMOS</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="productoPadre.length > 0">
+    <div>
+      <div style="margin-bottom: 10px">ES COMPONENTE DE:</div>
+
+      <div *ngFor="let productoPadre of productoPadre">
+        <div class="card-padre" (click)="onProductoClick(productoPadre.productoPadre)">
+          <div style="display: flex; justify-content: space-between">
+            <div style="font-weight: 500; font-size: 17px">
+              {{ productoPadre.productoPadre }}
+            </div>
+            <div style="font-weight: 600; font-size: 14px">
+              {{ productoPadre.tipo }}
+            </div>
+          </div>
+          <div>{{ productoPadre.nombre }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="vistaFoto">
+  <router-outlet></router-outlet>
+</div>

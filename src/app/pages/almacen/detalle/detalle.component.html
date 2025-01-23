@@ -1,0 +1,102 @@
+<div *ngIf="!vistaFoto" class="container">
+    <div class="container-body">
+      <div class="title-container" style="margin-bottom: 10px">
+        <i class="fa-solid fa-cart-shopping" style="color: #d9d9d9"></i>
+        <span
+          style="
+            flex-grow: 1;
+            text-align: center;
+            font-weight: 700;
+            color: #a9a7a7;
+            font-size: 14px;
+          "
+          >FORMULA INSUMOS</span
+        >
+        <i class="fa-duotone fa-solid fa-check-double" style="color: #d9d9d9"></i>
+      </div>
+      <!-- <div>
+          <select class="select-option">
+            <option value="">-- Seleccione un Año --</option>
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+            <option value="2022">2022</option>
+            <option value="2021">2021</option>
+            <option value="2020">2020</option>
+          </select>
+        </div> -->
+      <div *ngFor="let insumo of insumos">
+        <div class="cardT">
+          <div>
+            <div class="d-flex card-header">
+              <div
+                class="card-header-serie"
+                [ngClass]="getEstadoColorClass(insumo.estado)"
+              >
+                <div class="label-peso">
+                  <strong>{{ insumo.secuencia }}</strong>
+                </div>
+              </div>
+              <div class="d-flex">
+                <div class="label-peso">
+                  <strong>{{ insumo.area_trabajo }}</strong>
+                </div>
+              </div>
+              <div class="card-middle">
+                <div><i class="fa-solid fa-cube"></i></div>
+                <div>{{ insumo.cantidad }}</div>
+              </div>
+            </div>
+            <div *ngIf="insumo.canal.length == 19; else menosCanales" style="margin: 10px">
+              <div class="card-canal">
+                Todos los canales
+              </div>
+            </div>
+            
+            <ng-template #menosCanales>
+              <div *ngFor="let cliente of insumo.canal" style="margin: 10px">
+                <div class="card-canal">
+                  {{ cliente.canal_nombre }}
+                </div>
+              </div>
+            </ng-template>
+            <div *ngIf="insumo.cliente[0].cliente_codigo != ''">
+              <div *ngFor="let cliente of insumo.cliente" style="margin: 10px">
+                <div class="card-cliente">
+                  {{ cliente.cliente_nombre }} <br />
+                  <strong>{{ cliente.cliente_codigo }}</strong>
+                </div>
+              </div>
+            </div>
+            <div style="margin: 10px">
+              <div *ngIf="insumo.ensamblador_nombre" class="card-ensamblador">
+                <mat-icon style="color: #ee8951">home</mat-icon>
+                {{ insumo.ensamblador_nombre }}
+              </div>
+            </div>
+            <div style="margin: 10px">
+              <div *ngIf="insumo.advertencia" class="card-adv">
+                {{ insumo.advertencia }}
+              </div>
+              <div *ngIf="insumo.obs" class="card-obs">
+                {{ insumo.obs }}
+              </div>
+            </div>
+          </div>
+          <div class="footer-flen">
+            <a
+              href="javascript:void(0)"
+              [routerLink]="['fotos']"
+              (click)="verInsumo(insumo)"
+              class="changeProduct"
+              >INSUMOS</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="vistaFoto">
+    <router-outlet></router-outlet>
+  </div>
+  

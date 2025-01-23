@@ -1,0 +1,222 @@
+<div>
+    <div class="header">
+      <span style="font-size: 20px">PRODUCTO FOTOS</span>
+    </div>
+    <div>
+      <div style="display: flex; flex-direction: column; margin-bottom: 10px">
+        <span><strong> FOTOS DE LA FÓRMULA </strong></span>
+        <span>{{ insumos?.producto }} - {{ insumos?.secuencia }}</span>
+      </div>
+      <div *ngIf="fotos.length === 0" style="overflow-y: auto;  max-height: 500px;">
+        <div *ngFor="let categoriasP of categoriasProducto; let i = index" [attr.id]="'categoria' + i">
+          <div class="card-title">
+            <span class="nombre-grupo" (click)="toggleVisibility2(i); scrollToCategory(i)"
+              ><strong> {{ categoriasP.nombreGrupo }} </strong></span
+            >
+            <div *ngIf="categoriaAbierta2 === i && categoriasP.insumoFlag === 1">
+              <div *ngFor="let insu of insumo">
+                <div *ngIf="insu.canal === 'OSIS'">
+                  <div class="card-insumos">
+                    <div style="padding: 10px">
+                      <div style="display: flex; gap: 20px">
+                        <div class="insumo-codigo">
+                          {{ insu.insumo_codigo }}
+                        </div>
+                        <div
+                          [ngClass]="selectCanal(insu.canal)"
+                          class="insumo-canal"
+                        >
+                          {{ insu.canal }}
+                        </div>
+                      </div>
+                      <div style="font-size: small; margin-top: 10px">
+                        {{ insu.insumo_nombre }}
+                      </div>
+                    </div>
+                    <div style="padding: 10px; text-align: center">
+                      <div>{{ insu.cantidad_formula }}</div>
+                      <div>{{ insu.unidad_medida }}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="categoriaAbierta2 === i && categoriasP.masterpackFlag === 1">
+              <div *ngFor="let insu of insumoSAP">
+                <div *ngIf="insu.canal === 'SAP'">
+                  <div class="card-insumos">
+                    <div style="padding: 10px">
+                      <div style="display: flex; gap: 20px">
+                        <div class="insumo-codigo">
+                          {{ insu.insumo_codigo }}
+                        </div>
+                        <div
+                          [ngClass]="selectCanal(insu.canal)"
+                          class="insumo-canal"
+                        >
+                          {{ insu.canal }}
+                        </div>
+                      </div>
+                      <div style="font-size: small; margin-top: 10px">
+                        {{ insu.insumo_nombre }}
+                      </div>
+                    </div>
+                    <div style="padding: 10px; text-align: center">
+                      <div>{{ insu.cantidad_formula }}</div>
+                      <div>{{ insu.unidad_medida }}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div *ngFor="let categorias of fotos; let i = index" [attr.id]="'categoria' + i">
+        <div class="card-title">
+          <span class="nombre-grupo" (click)="toggleVisibility(i); scrollToCategory(i)">
+            <strong>{{ categorias.nombreGrupo }}</strong>
+          </span>
+          <div class="imagenes-grupo" *ngIf="categoriaAbierta === i">
+            <div *ngFor="let foto of categorias.imagenes">
+              <div style="display: flex; flex-direction: column">
+                <img
+                  [src]="foto.imagenBase64"
+                  alt="foto"
+                  class="foto"
+                  (click)="openImage(foto.imagenBase64)"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="card-descripcion"
+            *ngIf="categoriaAbierta === i && categorias.descripcion"
+          >
+            {{ categorias.descripcion }}
+          </div>
+          <div *ngIf="categoriaAbierta === i && categorias.insumoFlag === 1">
+            <div *ngFor="let insu of insumo">
+              <div *ngIf="insu.canal === 'OSIS'">
+                <div class="card-insumos">
+                  <div style="padding: 10px">
+                    <div style="display: flex; gap: 20px">
+                      <div class="insumo-codigo">
+                        {{ insu.insumo_codigo }}
+                      </div>
+                      <div
+                        [ngClass]="selectCanal(insu.canal)"
+                        class="insumo-canal"
+                      >
+                        {{ insu.canal }}
+                      </div>
+                    </div>
+                    <div style="font-size: small; margin-top: 10px">
+                      {{ insu.insumo_nombre }}
+                    </div>
+                  </div>
+                  <div style="padding: 10px; text-align: center">
+                    <div>{{ insu.cantidad_formula }}</div>
+                    <div>{{ insu.unidad_medida }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div *ngIf="insumos.ensamblador === '0001'"> -->
+          <div *ngIf="categoriaAbierta === i && categorias.masterpackFlag === 1">
+            <div *ngFor="let insu of insumoSAP">
+              <div *ngIf="insu.canal === 'SAP'">
+                <div class="card-insumos">
+                  <div style="padding: 10px">
+                    <div style="display: flex; gap: 20px">
+                      <div class="insumo-codigo">
+                        {{ insu.insumo_codigo }}
+                      </div>
+                      <div
+                        [ngClass]="selectCanal(insu.canal)"
+                        class="insumo-canal"
+                      >
+                        {{ insu.canal }}
+                      </div>
+                    </div>
+                    <div style="font-size: small; margin-top: 10px">
+                      {{ insu.insumo_nombre }}
+                    </div>
+                  </div>
+                  <div style="padding: 10px; text-align: center">
+                    <div>{{ insu.cantidad_formula }}</div>
+                    <div>{{ insu.unidad_medida }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
+    <div>
+      <div *ngFor="let insu of insumo">
+        <div class="card-insumos">
+          <div style="padding: 10px">
+            <div style="display: flex; gap: 20px">
+              <div class="insumo-codigo">
+                {{ insu.insumo_codigo }}
+              </div>
+              <div
+                [ngClass]="selectCanal(insu.canal)"
+                class="insumo-canal"
+              >
+                {{ insu.canal }}
+              </div>
+            </div>
+            <div style="font-size: small; margin-top: 10px">
+              {{ insu.insumo_nombre }}
+            </div>
+          </div>
+          <div style="padding: 10px; text-align: center">
+            <div>{{ insu.cantidad_formula }}</div>
+            <div>{{ insu.unidad_medida }}</div>
+          </div>
+        </div>
+      </div>
+      <div *ngFor="let insu of insumoSAP">
+        <div class="card-insumos">
+          <div style="padding: 10px">
+            <div style="display: flex; gap: 20px">
+              <div class="insumo-codigo">
+                {{ insu.insumo_codigo }}
+              </div>
+              <div
+                [ngClass]="selectCanal(insu.canal)"
+                class="insumo-canal"
+              >
+                {{ insu.canal }}
+              </div>
+            </div>
+            <div style="font-size: small; margin-top: 10px">
+              {{ insu.insumo_nombre }}
+            </div>
+          </div>
+          <div style="padding: 10px; text-align: center">
+            <div>{{ insu.cantidad_formula }}</div>
+            <div>{{ insu.unidad_medida }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div *ngIf="selectedImage" class="modal" (click)="closeImage()">
+      <span class="close" (click)="closeImage()">&times;</span>
+      <img class="modal-content" [src]="selectedImage" />
+    </div>
+  
+    <div class="floating-button" (click)="previewFIP()">
+      <i class="fa fa-file"></i> <!-- Icono de descarga (puedes cambiarlo por un ícono de biblioteca como Font Awesome) -->
+    </div>
+  
+    
+  </div>
+  

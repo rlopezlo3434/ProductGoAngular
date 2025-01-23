@@ -1,0 +1,281 @@
+<div style="display: flex; max-height: calc(100vh - 100px)">
+  <div class="conatiner-1">
+    <div class="title">Desarrollo de surtidos</div>
+    <div>
+      <div>
+        <mat-form-field style="width: 100%" class="example-full-width">
+          <mat-label>Nombre Surtido</mat-label>
+          <input matInput value="" type="text" />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field style="width: 100%" class="example-full-width">
+          <mat-label>Nombre Color Surtido</mat-label>
+          <input matInput value="" type="text" />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="title">Contenido</div>
+    <div style="display: flex; gap: 5px">
+      <div class="boton-eliminar"><i class="fa fa-trash"></i></div>
+      <div class="card-product">
+        <div class="card-title">CLX007500 - 216A</div>
+        <div class="card-desc">
+          COLGADOR MULTIPLE OVALADO GIGANTE FORTE C/ 24 GANCHOS
+        </div>
+      </div>
+      <div class="producto-cantidad">50</div>
+    </div>
+    <div style="margin-top: auto;border-radius: 10px; background-color: black; color: white; display: flex; justify-content: center; align-items: center; padding: 15px; font-size: 20px; cursor: pointer;">
+      CREAR SURTIDO
+    </div>
+  </div>
+  <div class="conatiner-2">
+    <div class="title-container-2">PRODUCTOS</div>
+    <div style="display: flex; gap: 10px">
+      <div style="width: 70%">
+        <mat-form-field style="width: 100%" class="example-full-width">
+          <input
+            type="text"
+            #input4
+            placeholder="Producto"
+            aria-label="text"
+            matInput
+            [matAutocomplete]="auto4"
+            (input)="filter4(input4.value)"
+            [(ngModel)]="selectedProducto"
+          />
+          <mat-autocomplete
+            (optionSelected)="onOptionSelected4($event)"
+            #auto4="matAutocomplete"
+          >
+            <mat-option
+              *ngFor="let option of filteredOptions4"
+              [value]="option.codigoProducto"
+            >
+              {{ option.codigoProducto }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+      <div style="width: 30%">
+        <div class="boton-buscar" (click)="buscarProducto()">Buscar</div>
+      </div>
+    </div>
+    <div class="title-container-2">COLORES</div>
+    <div class="scroll-CardPartes">
+      <div *ngFor="let color of productoPT.colores">
+        <div class="card-color">
+          <div class="titleColor-card">{{ color.codigoColor }}</div>
+          <div class="card-description">{{ color.nombreColor }}</div>
+        </div>
+      </div>
+      <!-- <div style="display: flex; ">
+        <div class="card-color">
+          <div class="titleColor-card">216A</div>
+          <div class="card-description">ALMENDRA</div>
+        </div>
+        <div class="card-color">
+          <div class="titleColor-card">197A</div>
+          <div class="card-description">AZUL TURQUEZA 3115C</div>
+        </div>
+        <div class="card-color">
+          <div class="titleColor-card">221A</div>
+          <div class="card-description">BLANCO MARMOL</div>
+        </div>
+      </div> -->
+    </div>
+    <div>
+      <button class="btn-agregar">AGREGAR</button>
+    </div>
+    <div class="title-container-2">PARTES</div>
+    <div class="container-card-partes">
+      <div *ngFor="let parte of productoPT.partes">
+        <div class="card-parte">
+          <div>
+            <div class="title-card-parte">{{ parte.codigoProducto }}</div>
+            <div class="card-description">
+              {{ parte.nombre }}
+            </div>
+          </div>
+          <div>1</div>
+
+          <div class="tipo-parte">{{ parte.tipoProducto }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="width: 30%; padding: 20px">
+    <div class="title-container-3">PRODUCTOS SURTIDOS</div>
+    <div class="container-productos-surtidos">
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          background-color: #dfe3e8;
+          border-radius: 10px;
+          padding: 12px;
+          margin-bottom: 10px;
+        "
+      >
+        <div>
+          <div style="display: flex; gap: 10px">
+            <div style="font-weight: 500; font-size: 20px">S0001</div>
+            <div style="color: #808386">145-17-052-001</div>
+          </div>
+          <div style="font-weight: 500; font-size: 12px">
+            MACETA COMERCIAL ORQUIDEA #12
+          </div>
+        </div>
+        <div style="text-align: end">
+          <div style="font-size: 12px">M001-CLARIFICADO</div>
+          <div style="font-size: 20px">Cant: 60</div>
+        </div>
+      </div>
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          background-color: #dfe3e8;
+          border-radius: 10px;
+          padding: 12px;
+          margin-bottom: 10px;
+        "
+      >
+        <div>
+          <div style="display: flex; gap: 10px">
+            <div style="font-weight: 500; font-size: 20px">S0001</div>
+            <div style="color: #808386">145-17-052-001</div>
+          </div>
+          <div style="font-weight: 500; font-size: 12px">
+            MACETA COMERCIAL ORQUIDEA #12
+          </div>
+        </div>
+        <div style="text-align: end">
+          <div style="font-size: 12px">M001-CLARIFICADO</div>
+          <div style="font-size: 20px">Cant: 60</div>
+        </div>
+      </div>
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          background-color: #dfe3e8;
+          border-radius: 10px;
+          padding: 12px;
+          margin-bottom: 10px;
+        "
+      >
+        <div>
+          <div style="display: flex; gap: 10px">
+            <div style="font-weight: 500; font-size: 20px">S0001</div>
+            <div style="color: #808386">145-17-052-001</div>
+          </div>
+          <div style="font-weight: 500; font-size: 12px">
+            MACETA COMERCIAL ORQUIDEA #12
+          </div>
+        </div>
+        <div style="text-align: end">
+          <div style="font-size: 12px">M001-CLARIFICADO</div>
+          <div style="font-size: 20px">Cant: 60</div>
+        </div>
+      </div>
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          background-color: #dfe3e8;
+          border-radius: 10px;
+          padding: 12px;
+          margin-bottom: 10px;
+        "
+      >
+        <div>
+          <div style="display: flex; gap: 10px">
+            <div style="font-weight: 500; font-size: 20px">S0001</div>
+            <div style="color: #808386">145-17-052-001</div>
+          </div>
+          <div style="font-weight: 500; font-size: 12px">
+            MACETA COMERCIAL ORQUIDEA #12
+          </div>
+        </div>
+        <div style="text-align: end">
+          <div style="font-size: 12px">M001-CLARIFICADO</div>
+          <div style="font-size: 20px">Cant: 60</div>
+        </div>
+      </div>
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          background-color: #dfe3e8;
+          border-radius: 10px;
+          padding: 12px;
+          margin-bottom: 10px;
+        "
+      >
+        <div>
+          <div style="display: flex; gap: 10px">
+            <div style="font-weight: 500; font-size: 20px">S0001</div>
+            <div style="color: #808386">145-17-052-001</div>
+          </div>
+          <div style="font-weight: 500; font-size: 12px">
+            MACETA COMERCIAL ORQUIDEA #12
+          </div>
+        </div>
+        <div style="text-align: end">
+          <div style="font-size: 12px">M001-CLARIFICADO</div>
+          <div style="font-size: 20px">Cant: 60</div>
+        </div>
+      </div>
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          background-color: #dfe3e8;
+          border-radius: 10px;
+          padding: 12px;
+          margin-bottom: 10px;
+        "
+      >
+        <div>
+          <div style="display: flex; gap: 10px">
+            <div style="font-weight: 500; font-size: 20px">S0001</div>
+            <div style="color: #808386">145-17-052-001</div>
+          </div>
+          <div style="font-weight: 500; font-size: 12px">
+            MACETA COMERCIAL ORQUIDEA #12
+          </div>
+        </div>
+        <div style="text-align: end">
+          <div style="font-size: 12px">M001-CLARIFICADO</div>
+          <div style="font-size: 20px">Cant: 60</div>
+        </div>
+      </div>
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          background-color: #dfe3e8;
+          border-radius: 10px;
+          padding: 12px;
+          margin-bottom: 10px;
+        "
+      >
+        <div>
+          <div style="display: flex; gap: 10px">
+            <div style="font-weight: 500; font-size: 20px">S0001</div>
+            <div style="color: #808386">145-17-052-001</div>
+          </div>
+          <div style="font-weight: 500; font-size: 12px">
+            MACETA COMERCIAL ORQUIDEA #12
+          </div>
+        </div>
+        <div style="text-align: end">
+          <div style="font-size: 12px">M001-CLARIFICADO</div>
+          <div style="font-size: 20px">Cant: 60</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
