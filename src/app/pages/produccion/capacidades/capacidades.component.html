@@ -101,6 +101,42 @@
         </div>
       </div>
       <div class="w50">
+        <div class="text-font">Herramienta Utilizada</div>
+        <div>
+          <mat-form-field style="width: 100%" class="example-full-width">
+            <input
+              type="text"
+              #input2
+              placeholder="Herramienta Utilizada"
+              aria-label="Number"
+              matInput
+              [matAutocomplete]="auto3"
+              (input)="filter3(input2.value)"
+              [(ngModel)]="selectedOperario"
+            />
+            <mat-autocomplete (optionSelected)="onOptionSelected2($event)" #auto3="matAutocomplete">
+              <mat-option
+                *ngFor="let option of filteredOptions3"
+                [value]="option.nombreOperario"
+              >
+                {{ option.nombreOperario }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="flexbottom">
+      <div class="w50">
+        <div class="text-font">Cantidad de Producto</div>
+        <div>
+          <mat-form-field style="width: 100%" class="example-full-width">
+            <mat-label>Cantidad</mat-label>
+            <input matInput type="text" [value]="consultor" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="w50">
         <div class="text-font">Producto</div>
         <div>
           <mat-form-field style="width: 100%" class="example-full-width">
